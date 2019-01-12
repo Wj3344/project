@@ -4,25 +4,11 @@ import java.io.Serializable;
 
 public class Identity implements Serializable {
 
+    private static final long serialVersionUID = 380428164496667137L;
 
-    private static final long serialVersionUID = -6222473820006805283L;
-    /**
-     * 记录id
-     */
     private Integer id;
-
-    /**
-     * 记录描述
-     */
+    private String name;
     private String description;
-
-    @Override
-    public String toString() {
-        return "Identity{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                '}';
-    }
 
     public Integer getId() {
         return id;
@@ -32,11 +18,32 @@ public class Identity implements Serializable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Identity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

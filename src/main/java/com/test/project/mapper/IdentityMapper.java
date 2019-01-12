@@ -52,4 +52,13 @@ public interface IdentityMapper {
      */
     @Update("update identity set description = #{description} where id = #{id}")
     int updateByPrimaryKey(Identity record);
+
+    /**
+     * 通过用户名查找用户角色
+     *
+     * @param username 用户名
+     * @return 查询结果
+     */
+    @Select("select id, description from identity where id = (select identity from user where username = #{username})")
+    List<Identity> findByUsername(String username);
 }

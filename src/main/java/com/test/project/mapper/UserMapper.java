@@ -4,8 +4,8 @@ import com.test.project.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
-@Component
 @Mapper
+@Component
 public interface UserMapper {
     /**
      * 根据id删除一条记录
@@ -67,6 +67,15 @@ public interface UserMapper {
      */
     @Update("update user set point = point - #{integral} where id = #{id};")
     int reduceIntegral(int id, int integral);
+
+    /**
+     * 根据用户名查询用户信息
+     *
+     * @param username 用户名
+     * @return 用户详细信息
+     */
+    @Select("select id, username, password, nickname, school, studentId, email, picture, signature, identity, point from user where username = #{username} limit 1")
+    User queryUserByUsername(String username);
 
 
 }
