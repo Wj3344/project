@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <section id="content">
+        <form th:action="@{/login}" method="post">
+            <h1>知海考研</h1>
+            <div>
+                <input type="text" id="username" placeholder="请输入用户名" required name="username"/>
+            </div>
+            <div>
+                <input type="password" placeholder="请输入密码" required name="password" id="password"/>
+            </div>
+            <div>
+                <input type="submit" value="登录"/>
+                <a th:href="@{/getPassword}">忘记密码?</a>
+                <a th:href="@{/registration}">注册</a>
+            </div>
+        </form><!-- form -->
+    </section><!-- content -->
+</div><!-- container -->
+</body>
+</html>

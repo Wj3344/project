@@ -44,4 +44,13 @@ public interface PlateMapper {
      */
     @Update("update plate set name = #{admin}, referral = #{referral}, admin = #{admin} where id = #{id}")
     int updateByPrimaryKey(Plate record);
+
+    /**
+     * 根据管理员id查询时候有其负责的板块
+     *
+     * @param admin Admin
+     * @return 查询结果
+     */
+    @Select("select count(*) from plate where admin= #{admin}")
+    int findByAdmin(int admin);
 }

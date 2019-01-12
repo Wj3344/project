@@ -23,7 +23,7 @@ public interface MessageMapper {
      * @param record 记录内容
      * @return 添加结果
      */
-    @Insert("insert into message(author, receiver, message, plateMessageId) values (#{author}, #{receiver}, #{message}, #{plateMessageId});")
+    @Insert("insert into message(author, message, plateMessageId) values (#{author}, #{message}, #{plateMessageId});")
     int insert(Message record);
 
     /**
@@ -32,7 +32,7 @@ public interface MessageMapper {
      * @param id 主键id
      * @return 查询结果
      */
-    @Select("select id, author, receiver, message, time, plateMessageId from message where id = #{id}")
+    @Select("select id, author, message, time, plateMessageId from message where id = #{id}")
     Message selectByPrimaryKey(Integer id);
 
     /**

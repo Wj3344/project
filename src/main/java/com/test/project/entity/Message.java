@@ -22,11 +22,6 @@ public class Message implements Serializable {
     private Integer author;
 
     /**
-     * 收信人id
-     */
-    private Integer receiver;
-
-    /**
      * 留言信息
      */
     private String message;
@@ -46,7 +41,6 @@ public class Message implements Serializable {
         return "Message{" +
                 "id=" + id +
                 ", author=" + author +
-                ", receiver=" + receiver +
                 ", message='" + message + '\'' +
                 ", time=" + time +
                 ", plateMessageId=" + plateMessageId +
@@ -67,14 +61,6 @@ public class Message implements Serializable {
 
     public void setAuthor(Integer author) {
         this.author = author;
-    }
-
-    public Integer getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(Integer receiver) {
-        this.receiver = receiver;
     }
 
     public String getMessage() {

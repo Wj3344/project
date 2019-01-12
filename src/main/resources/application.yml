@@ -57,7 +57,7 @@ spring:
           log-slow-sql: true
   thymeleaf:
     encoding: UTF-8
-    mode: LEGACYHTML5
+    mode: HTML
     servlet:
       content-type: text/html
     # 关闭thymeleaf页面缓存

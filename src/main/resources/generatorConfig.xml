@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <classPathEntry
+            location="/home/chen/.m2/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc链接信息 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://118.89.54.91:3306/project?"
+                        userId="root" password="wj1012">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.test.project.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.test.project.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 指定要生成的表 -->
+        <table tableName="identity" domainObjectName="Identity"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="user" domainObjectName="User"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="plate" domainObjectName="Plate"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="plateAdmin" domainObjectName="PlateAdmin"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="plateMessage" domainObjectName="PlateMessage"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="integralConsumption" domainObjectName="IntegralConsumption"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="downloaded" domainObjectName="Downloaded"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="uploaded" domainObjectName="Uploaded"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="message" domainObjectName="Message"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="privateLetter" domainObjectName="PrivateLetter"
+               enableSelectByExample="false"
+               enableDeleteByExample="false" enableCountByExample="false"
+               selectByExampleQueryId="true" enableUpdateByExample="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
