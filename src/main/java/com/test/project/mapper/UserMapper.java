@@ -77,5 +77,23 @@ public interface UserMapper {
     @Select("select id, username, password, nickname, school, studentId, email, picture, signature, identity, point from user where username = #{username} limit 1")
     User queryUserByUsername(String username);
 
+    /**
+     * 用户注册请求
+     *
+     * @param user 用户信息
+     * @return 注册结果
+     */
+    @Insert("insert into user (username,password,studentId,school,email) values (#{username},#{password},#{studentId},#{school},#{email})")
+    int registration(User user);
 
+    /**
+     * 根据学号和邮箱找回密码
+     *
+     * @param email     邮箱
+     * @param studentId 学号
+     * @param username  用户名
+     * @return 密码
+     */
+    @Select("select password from user where username = #{username} and email = #{email} and studentId = #{studentId}")
+    String getPassword(String username, String email, int studentId);
 }

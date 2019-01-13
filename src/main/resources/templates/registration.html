@@ -1,214 +1,296 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta charset="utf-8"/>
-    <title>次日航班信息录入</title>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"-->
-    <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
-    <link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{/static/css/registration.css}"/>
-    <!-- 引用jquery -->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-    <script th:src="@{/js/jquery.min.js}" type="text/javascript"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"-->
-    <!--integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
-    <!--crossorigin="anonymous"></script>-->
-    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
-    <!-- 引入bootstrap 时间组件 -->
-    <link rel="stylesheet" media="screen" th:href="@{/static/css/bootstrap-datetimepicker.min.css}"/>
-    <script th:src="@{/js/bootstrap-datetimepicker.js}" type="text/javascript"></script>
+    <meta charset="UTF-8">
+    <title>账户注册</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+        body, input {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+
+        input {
+            display: inline-block;
+            background: #fff;
+        }
+
+        .xiao-container {
+            width: 100%;
+        }
+
+        .xiao-register-box {
+            position: relative;
+            height: 800px;
+            width: 800px;
+            top: 50px;
+            margin: 0 auto;
+            z-index: 99999;
+            background: #ffffff;
+            border: 7px solid #c62f2f;
+        }
+
+        .xiao-title-box {
+            position: absolute;
+            width: 300px;
+            height: 50px;
+            margin-left: 250px;
+            margin-top: 5px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 800;
+            color: #c62f2f;
+            line-height: 50px;
+        }
+
+        .xiao-username-box {
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 100px;
+            margin-left: 80px;
+            font-weight: 700;
+        }
+
+        .xiao-username-input {
+            display: inline-block;
+            margin-left: 45px;
+            /*background: green;*/
+        }
+
+        #username {
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .xiao-userPassword-box {
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 180px;
+            margin-left: 80px;
+            font-weight: 700;
+        }
+
+        .xiao-userPassword-input {
+            display: inline-block;
+            margin-left: 61px;
+        }
+
+        #password {
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .xiao-userRePassword-box {
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 260px;
+            margin-left: 80px;
+            font-weight: 700;
+        }
+
+        .xiao-userRePassword-input {
+            display: inline-block;
+            margin-left: 28px;
+        }
+
+        #userRePassword {
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .xiao-userXuexiao-box {
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 340px;
+            margin-left: 80px;
+            font-weight: 700;
+        }
+
+        .xiao-userXuexiao-input {
+            display: inline-block;
+            margin-left: 28px;
+        }
+
+        #userXuexiao {
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .xiao-userXuehao-box {
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 420px;
+            margin-left: 80px;
+            font-weight: 700;
+        }
+
+        .xiao-userXuehao-input {
+            display: inline-block;
+            margin-left: 28px;
+        }
+
+        #userXuehao {
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .xiao-userEmail-box {
+            position: absolute;
+            width: 420px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 500px;
+            margin-left: 80px;
+            font-weight: 700;
+        }
+
+        .xiao-userEmail-input {
+            display: inline-block;
+            margin-left: 28px;
+        }
+
+        #userEmail {
+            height: 35px;
+            width: 290px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .xiao-require {
+            color: red;
+        }
+
+        .xiao-submit-box {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 660px;
+            margin-left: 200px;
+            border-radius: 5px;
+            background: grey;
+        }
+
+        #xiao-submit-button {
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            background: #c62f2f;
+        }
+
+        .xiao-goLogin-box {
+            position: absolute;
+            width: 150px;
+            height: 20px;
+            margin-top: 680px;
+            margin-left: 320px;
+
+        }
+
+    </style>
 </head>
 <body>
-<div class="mainContainer">
-    <form th:action="@{/registration/add}" method="post" id="myForm" onsubmit="return checkMessage()">
-        <div class="form-group">
-            <div class="text-center">
-                <h2>次日航班信息录入</h2>
-            </div>
+<div class="xiao-container">
+    <div class="xiao-register-box">
+        <div class="xiao-title-box">
+            <span>注册账号</span>
         </div>
-        <div class="row">
-            <div class="form-group col-sm-offset-1 col-sm-5">
-                <label for="flightNumber" class="control-label">航班号：</label>
-                <div class="">
-                    <input type="text" class="form-control" id="flightNumber" placeholder="请输入航班号" required>
+        <form th:action="@{/registration}" method="post" onsubmit="return check()">
+            <div class="xiao-username-box">
+                <span class="xiao-require">*</span>
+                <label for="username">用户名</label>
+                <div class="xiao-username-input">
+                    <input type="text" id="username" name="username" placeholder="请输入用户名 长度:6-12个字符"/>
                 </div>
             </div>
-            <div class="form-group col-sm-5">
-                <label for="destination" class="control-label">目的地：</label>
-                <div>
-                    <input type="text" class="form-control" id="destination" placeholder="请输入目的地" required>
+
+            <div class="xiao-userPassword-box">
+                <span class="xiao-require">*</span>
+                <label for="password">密码</label>
+                <div class="xiao-userPassword-input">
+                    <input type="password" id="password" name="password" placeholder="请输入密码 长度:6-12个字符"/>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-offset-1 col-sm-5">
-                <label for="planeNumber" class="control-label">机号：</label>
-                <div class="">
-                    <input type="text" class="form-control" id="planeNumber" placeholder="请输入机号" required>
+
+            <div class="xiao-userRePassword-box">
+                <span class="xiao-require">*</span>
+                <label for="userRePassword">确认密码</label>
+                <div class="xiao-userRePassword-input">
+                    <input type="password" id="userRePassword" name="userRePassword" placeholder="请重复输入密码:"/>
                 </div>
             </div>
-            <div class="form-group col-sm-5">
-                <label for="dtp_input1" class="control-label">登机时间：</label>
-                <div class="input-group date form_datetime "
-                     data-date-format="yyyy年MM月dd - HH:ii p" data-link-field="dtp_input1">
-                    <input class="form-control" size="16" type="text" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                </div>
-                <input type="hidden" id="dtp_input1" value="" readonly required/><br/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-offset-1 col-sm-5">
-                <label for="gatePosition" class="control-label">停机位：</label>
-                <div class="">
-                    <input type="text" class="form-control" id="gatePosition" placeholder="请输入停机位" required>
+
+            <div class="xiao-userXuehao-box">
+                <span class="xiao-require">*</span>
+                <label for="userXuehao">学号</label>
+                <div class="xiao-userXuehao-input">
+                    <input type="text" id="userXuehao" name="studentId" placeholder="请输入您的学号："/>
                 </div>
             </div>
-            <div class="form-group col-sm-5">
-                <label for="specialFlight" class="control-label">特殊航班：</label>
-                <div id="specialFlight">
-                    <label class="checkbox-inline" style="margin-left: 0;margin-right: 10px;"
-                           th:each="specialFlightTag,iterStat:${specialFlightTags}">
-                        <input type="checkbox" name="specialFlightTag"
-                               th:id="|specialFlightTag${specialFlightTag.id}|" th:value=${specialFlightTag.id}>
-                        <span>[[${specialFlightTag.describe}]]</span>
-                        <br th:with="isEven=(${iterStat.count} % 5 ==0)">
-                    </label>
+
+            <div class="xiao-userXuexiao-box">
+                <span class="xiao-require">*</span>
+                <label for="userXuexiao">学校</label>
+                <div class="xiao-userXuexiao-input">
+                    <input type="text" id="userXuexiao" name="school" placeholder="请输入您的学校："/>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-offset-1 col-sm-5">
-                <label for="airportOfDeparture" class="control-label">始发站：</label>
-                <div class="">
-                    <input type="text" class="form-control" id="airportOfDeparture" placeholder="请输入始发站">
+
+            <div class="xiao-userEmail-box">
+                <span class="xiao-require">*</span>
+                <label for="userEmail">电子邮箱</label>
+                <div class="xiao-userEmail-input">
+                    <input type="text" id="userEmail" name="email" placeholder="请输入您的邮箱地址，如：123@qq.com"/>
                 </div>
             </div>
-            <div class="form-group col-sm-5">
-                <label for="important" class="control-label">重点旅客标记：</label>
-                <div id="important">
-                    <label class="checkbox-inline" style="margin-left: 0;margin-right: 10px;"
-                           th:each="passengerTag,iterStat:${passengerTags}">
-                        <input type="checkbox" name="passengerTag" th:id="|passengerTag${passengerTag.id}|"
-                               th:value=${passengerTag.id}>
-                        <span>[[${passengerTag.describe}]]</span>
-                        <br th:with="isEven=(${iterStat.count} % 5 ==0)">
-                    </label>
-                </div>
+
+
+            <div class="xiao-submit-box">
+                <input id="xiao-submit-button" type="submit" value="注册">
             </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-sm-offset-1 col-sm-10">
-                <label for="specialCircumstances" class="control-label">特殊情况说明：</label>
-                <div class="">
-                    <textarea class="form-control" rows="3" id="specialCircumstances"></textarea>
-                </div>
+            <div class="xiao-goLogin-box">
+                <a th:href="@{/login}" style="text-decoration: none;">已有账号？去登录</a>
             </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-offset-2 col-sm-2">
-                <button type="reset" class="btn btn-lg btn-danger btn-block">全部清空</button>
-            </div>
-            <div class="col-sm-offset-3 col-sm-2">
-                <button type="submit" class="btn btn-lg btn-success btn-block">上传</button>
-            </div>
-        </div>
-        <div id="myTag"></div>
-    </form>
+        </form>
+    </div>
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        weekStart: 0, //一周从哪一天开始
-        todayBtn: 1, //
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1,
-        minuteStep: 1
-    });
-
-    var isNull = function (obj) {
-        return obj;
-    };
-
-    var checkMessage = function () {
-        // 获取各个输入的值
-        console.log("执行检查函数");
-        var flightNumber = $("#flightNumber").val();
-        console.log("航班号" + flightNumber);
-        var destination = $("#destination").val();
-        console.log("目的地" + destination);
-        var planeNumber = $("#planeNumber").val();
-        console.log("机号" + planeNumber);
-        var dtp_input1 = $("#dtp_input1").val();
-        console.log("登机时间" + dtp_input1);
-        if (!isNull(dtp_input1)) {
-            console.log("时间为空");
-            alert("请填写登机时间！");
-            $("#dtp_input1")[0].focus();
+    var check = function () {
+        var password = $("#password").val();
+        var userRePassword = $("#userRePassword").val();
+        console.log("userRePassword = " + userRePassword);
+        console.log("password = " + password);
+        if (password != userRePassword) {
+            console.log("两次输入的密码不一致，请重新输入");
+            alert("两次输入的密码不一致，请重新输入");
+            $("#password").focus();
             return false;
         }
-        var boardingTime = new Date(dtp_input1).getTime();
-        console.log(boardingTime);
-
-        var gatePosition = $("#gatePosition").val();
-        console.log("停机位" + gatePosition);
-        var airportOfDeparture = $("#airportOfDeparture").val();
-        console.log("始发站" + airportOfDeparture);
-        var specialCircumstances = $("#specialCircumstances").val();
-        console.log("特殊情况说明" + specialCircumstances);
-
-        // 重点旅客标记
-        var passengerTagCheckValue = [];
-        $('input[name="passengerTag"]:checked').each(function () {
-            passengerTagCheckValue.push($(this).val());//向数组中添加元素  
-        });
-        var checkStr = passengerTagCheckValue.join(',');//将数组元素连接起来以构建一个字符串  
-        console.log(checkStr);
-        // 特殊航班标记
-        var specialFlightTagCheckValue = [];
-        $('input[name="specialFlightTag"]:checked').each(function () {
-            specialFlightTagCheckValue.push($(this).val());//向数组中添加元素  
-        });
-        checkStr = specialFlightTagCheckValue.join(',');//将数组元素连接起来以构建一个字符串  
-        console.log(checkStr);
-        var registration = {}, $node;
-        // 航班号
-        registration.flightNumber = flightNumber;
-        // 机号
-        registration.planeNumber = planeNumber;
-        // 登机时间
-        registration.boardingTime = boardingTime;
-        // 停机位
-        registration.gatePosition = gatePosition;
-        // 始发站
-        registration.departureStation = airportOfDeparture;
-        // 目的地
-        registration.destination = destination;
-        // 特殊情况说明
-        registration.special = specialCircumstances;
-        // 特殊航班标记
-        registration.specialTags = specialFlightTagCheckValue;
-        // 重点旅客标记
-        registration.passengerTags = passengerTagCheckValue;
-        var message = JSON.stringify(registration);
-        console.log("组装的对象 ： " + message);
-        var myTag = $("#myTag");
-        myTag.empty();
-        // 将数据埋进表单
-        $node = '<input type="text" name="registration" id="registration" value=' + message + ' hidden="hidden">';
-        //新表单项添加到td中
-        myTag.append($node);
         return true;
     };
 </script>

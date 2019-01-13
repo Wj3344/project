@@ -37,6 +37,10 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/images/**", "anon");
         //druid 数据源监控界面不拦截
         filterChainDefinitionMap.put("/druid/**", "anon");
+        // 注册页面不拦截
+        filterChainDefinitionMap.put("/registration", "anon");
+        // 找回密码页面不拦截
+        filterChainDefinitionMap.put("/getPassword", "anon");
         //配置退出过滤器，其中具体的退出代码 Shiro 已经帮我们实现了
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/", "anon");

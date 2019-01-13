@@ -36,10 +36,10 @@ public interface PrivateLetterMapper {
     @Select("select id, author, receiver, message, time, sign from privateLetter where id = #{id};")
     PrivateLetter selectByPrimaryKey(Integer id);
 
+
     /**
      * 更新记录（更新消息状态）
-     *
-     * @param record 新的记录
+     * @param record 新的消息
      * @return 更新结果
      */
     @Update("update privateLetter set sign = #{sign} where id = #{id};")
@@ -60,6 +60,6 @@ public interface PrivateLetterMapper {
      * @param receiver 收件人id
      * @return 查询结果
      */
-    @Select("select id, author, receiver, message, time, sign from privateLetter where receiver = #{receiver} and sign = 0;")
-    List<PrivateLetter> findAllNoReadMessage(int receiver);
+    @Select("select id, author, receiver, message, time, sign from privateLetter where receiver = #{receiver};")
+    List<PrivateLetter> findAllMessage(int receiver);
 }

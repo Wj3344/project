@@ -1,8 +1,11 @@
 package com.test.project.mapper;
 
 import com.test.project.entity.Plate;
+import com.test.project.entity.PlateMessage;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 
 @Component
@@ -51,6 +54,24 @@ public interface PlateMapper {
      * @param admin Admin
      * @return 查询结果
      */
-    @Select("select count(*) from plate where admin= #{admin}")
-    int findByAdmin(int admin);
+    @Select("select id from plate where admin= #{admin}")
+    List<Integer> findByAdmin(int admin);
+
+    /**
+     * 获取一个板块下的一部分内容
+     *
+     * @param plateId 板块id
+     * @param number  数量
+     * @return 查询结果
+     */
+    @Select("select id, title,content,time from plateMessage where id = #{plateId} order by time limit #{number}")
+    List<PlateMessage> getByIdAndNumber(int plateId, int number);
+
+    /**
+     * 获取所有的板块
+     *
+     * @return 板块列表
+     */
+    @Select("select id, name, referral, admin from plate;")
+    List<Plate> getAllPlate();
 }

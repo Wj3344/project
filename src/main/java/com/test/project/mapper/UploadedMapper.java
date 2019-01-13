@@ -4,6 +4,8 @@ import com.test.project.entity.Uploaded;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface UploadedMapper {
@@ -54,4 +56,13 @@ public interface UploadedMapper {
      */
     @Update("update `uploaded` set status = #{status} where id = #{id};")
     int updateMessageStatus(Uploaded record);
+
+    /**
+     * 根据板块id获取所有上传的消息
+     *
+     * @param plateId 板块id
+     * @return 查询结果
+     */
+    @Select("select id, title, content, time, plateId, userId, value, status from uploaded where plateId = #{plateId}")
+    List<Uploaded> findAllByPlateIdOrOrderByTime(int plateId);
 }
