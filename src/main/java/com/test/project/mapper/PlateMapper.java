@@ -64,7 +64,7 @@ public interface PlateMapper {
      * @param number  数量
      * @return 查询结果
      */
-    @Select("select id, title,content,time from plateMessage where id = #{plateId} order by time limit #{number}")
+    @Select("select id, title,content,time from plateMessage where plateId = #{plateId} order by time limit #{number}")
     List<PlateMessage> getByIdAndNumber(int plateId, int number);
 
     /**
