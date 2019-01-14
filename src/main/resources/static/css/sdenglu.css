@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+
+ .da{
+	width: 50%;
+	margin-left: 25%;
+    height:50%;
+    padding-top: 50%;
+    background-color: #999999;
+ }
+.da #user {
+	width: 70%;
+    margin-left: 30%;
+	border-radius: 0px;
+	height: 30px;
+	text-align: center;
+	color: #ffffff;
+	font-size: 14px;
+    padding-top: 20%;
+}

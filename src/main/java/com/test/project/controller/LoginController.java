@@ -1,11 +1,9 @@
 package com.test.project.controller;
 
-import com.test.project.entity.ErrorMessage;
-import com.test.project.entity.PlateMessage;
-import com.test.project.entity.ResponseMessage;
-import com.test.project.entity.User;
+import com.test.project.entity.*;
 import com.test.project.mapper.UserMapper;
 import com.test.project.model.MessageLink;
+import com.test.project.service.PlateAdminService;
 import com.test.project.service.PlateMessageService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -40,6 +38,8 @@ public class LoginController {
     private UserMapper userMapper;
 
     private PlateMessageService plateMessageService;
+
+    private PlateAdminService plateAdminService;
 
     /**
      * 返回登录页面
@@ -84,6 +84,13 @@ public class LoginController {
         User user = (User) SecurityUtils.getSubject().getPrincipal();
         model.addAttribute("username", user.getUsername());
         model.addAttribute("identity", user.getIdentity());
+        // 查询是否是板块管理员或者板块助理
+        List<PlateAdmin> byAdminId = plateAdminService.findByAdminId(user.getId());
+        if (byAdminId.size() == 0) {
+            model.addAttribute("isAdmin", false);
+        } else {
+            model.addAttribute("isAdmin", true);
+        }
         // 文科
         List<PlateMessage> wenkeList = plateMessageService.getByIdAndNumber(1, 6);
         model.addAttribute("wenkeList", wenkeList);
@@ -190,5 +197,10 @@ public class LoginController {
     @Autowired
     public void setPlateMessageService(PlateMessageService plateMessageService) {
         this.plateMessageService = plateMessageService;
+    }
+
+    @Autowired
+    public void setPlateAdminService(PlateAdminService plateAdminService) {
+        this.plateAdminService = plateAdminService;
     }
 }
