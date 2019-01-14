@@ -75,4 +75,12 @@ public interface UserService {
      * @return 更新结果
      */
     int updatePrivateLetter(int id);
+
+    /**
+     * 获取所有的用户列表
+     *
+     * @return 用户列表
+     */
+    List<User> getAllUser();
+
 }

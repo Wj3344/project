@@ -21,6 +21,7 @@ import java.util.List;
 @Service
 public class PlateServiceImpl implements PlateService {
     private PlateMapper plateMapper;
+
     @Override
     public int addPlate(Plate plate) {
         return 0;
@@ -38,7 +39,7 @@ public class PlateServiceImpl implements PlateService {
 
     @Override
     public Plate getPlate(int id) {
-        return null;
+        return plateMapper.selectByPrimaryKey(id);
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.test.project.entity.PlateMessage;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Mapper
 public interface PlateMessageMapper {
@@ -51,7 +53,7 @@ public interface PlateMessageMapper {
      * @param id 板块消息id
      * @return 增加结果
      */
-    @Update("update plate set instructions = instructions + 1 where id = #{id}")
+    @Update("update plateMessage set instructions = instructions + 1 where id = #{id}")
     int addInstructions(int id);
 
     /**
@@ -80,4 +82,12 @@ public interface PlateMessageMapper {
      */
     @Update("update plate set block = #{block} where id = #{id}")
     int modifyBlock(int id, int block);
+
+    /**
+     * 根据板块id查询数据
+     * @param plateId 板块id
+     * @return 数据列表
+     */
+    @Select("select id, title, content, time, plateId, instructions, replies, priority, block, userId, value from plateMessage where plateId = #{plateId} order by time")
+    List<PlateMessage> findAllByPlateId(int plateId);
 }

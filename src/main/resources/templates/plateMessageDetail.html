@@ -22,45 +22,38 @@
             </a>
         </div>
         <div id="headerLinks">
-            <a title="Login/Register">你好：[[${username}]]</a>
+            <a title="Login/Register">你好：[[${user.username}]]</a>
             <a th:href="@{/logout}">退出登录</a>
             <a th:href="@{/privateLetterList}">我的私信</a>
         </div>
     </header>
 </div>
 <div style="clear: both;height: 6px;"></div>
-<div class="letterListContent">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>发件人</th>
-            <th>消息内容</th>
-            <th>发件时间</th>
-            <th>是否已读</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="letter:${letterLists}">
-            <td>[[${letter.username}]]</td>
-            <td>[[${letter.message}]]</td>
-            <td>[[${#dates.format(letter.time, 'yyyy/MM/dd HH:mm')}]]</td>
-            <td th:text="${letter.sign}?'已读':'未读'"></td>
-            <td>
-                <a th:if="${letter.sign}" th:href="@{'/privateLetterList/delete/' + ${letter.id}}" th:text="删除">默认</a>
-                <a th:if="${letter.sign==false}" th:href="@{'/privateLetterList/mark/' + ${letter.id}}" th:text="标记为已读">默认</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="jumbotron" style="width: 96%;margin: auto;border-radius: 8px;">
+    <h1 th:align="center" th:text="${plateMessage.title}">欢迎来到</h1>
+    <hr>
+    <div align="center" style="font-size: 10px;">上传于:[[${#dates.format(plateMessage.time, 'yyyy/MM/dd HH:mm')}]]</div>
+    <div align="center" style="font-size: 10px;">
+        访问量:&nbsp;[[${plateMessage.instructions}]]
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        回复量:&nbsp;[[${plateMessage.replies}]]
+    </div>
+</div>
+<div style="height: 6px;"></div>
+<div class="well" style="width: 96%;margin: auto;border-radius: 8px;">
+    <div class="myContent">
+        <p th:text="${plateMessage.content}"></p>
+    </div>
 </div>
 </body>
 </html>
 
 <style type="text/css">
-    .letterListContent {
-        width: 90%;
-        margin: auto;
-        border: 1px solid black;
+    p {
+        font-size: 16px; /*字体大小*/
+        text-indent: 2em; /*首行缩进两个单位*/
+        line-height: 1.5em; /*行距为1.5个单位*/
+        padding: 10px; /*用内边距代替外边距来设置段间距*/
+        margin: 0; /*去掉默认的段间距*/
     }
 </style>

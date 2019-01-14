@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>知海考研</title>
+    <title>知海考研 - 板块管理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
     <script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js"
@@ -22,45 +22,34 @@
             </a>
         </div>
         <div id="headerLinks">
-            <a title="Login/Register">你好：[[${username}]]</a>
+            <a title="Login/Register">你好：[[${session.user.username}]]</a>
             <a th:href="@{/logout}">退出登录</a>
             <a th:href="@{/privateLetterList}">我的私信</a>
         </div>
     </header>
 </div>
 <div style="clear: both;height: 6px;"></div>
-<div class="letterListContent">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>发件人</th>
-            <th>消息内容</th>
-            <th>发件时间</th>
-            <th>是否已读</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="letter:${letterLists}">
-            <td>[[${letter.username}]]</td>
-            <td>[[${letter.message}]]</td>
-            <td>[[${#dates.format(letter.time, 'yyyy/MM/dd HH:mm')}]]</td>
-            <td th:text="${letter.sign}?'已读':'未读'"></td>
-            <td>
-                <a th:if="${letter.sign}" th:href="@{'/privateLetterList/delete/' + ${letter.id}}" th:text="删除">默认</a>
-                <a th:if="${letter.sign==false}" th:href="@{'/privateLetterList/mark/' + ${letter.id}}" th:text="标记为已读">默认</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<div class="well plateList">
+    <a class="btn btn-success" th:href="@{/plate/manager/add}" role="button">添加一个板块</a>
+</div>
+<div th:each="plate:${plateList}" class="well plateList">
+    <div class="plate">
+        <h1 th:text="${plate.name}">板块标题</h1>
+        <hr>
+        <h3 th:text="${plate.referral}">板块介绍</h3>
+        <div class="pull-right">
+            <a class="btn btn-danger" th:href="@{'/plate/manager/modify/' + ${plate.id}}" role="button">修改板块消息</a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
 </div>
 </body>
 </html>
 
 <style type="text/css">
-    .letterListContent {
-        width: 90%;
+    .plateList {
+        width: 96%;
         margin: auto;
-        border: 1px solid black;
+        margin-bottom: 8px;
     }
 </style>

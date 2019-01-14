@@ -83,6 +83,9 @@ public class LoginController {
         // 获取六个板块的6条消息
         User user = (User) SecurityUtils.getSubject().getPrincipal();
         model.addAttribute("username", user.getUsername());
+        ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        assert requestAttributes != null;
+        requestAttributes.setAttribute("user", user, RequestAttributes.SCOPE_SESSION);
         model.addAttribute("identity", user.getIdentity());
         // 查询是否是板块管理员或者板块助理
         List<PlateAdmin> byAdminId = plateAdminService.findByAdminId(user.getId());
@@ -117,14 +120,11 @@ public class LoginController {
         System.out.println("进入error控制器");
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         assert requestAttributes != null;
-        ErrorMessage errorMessage = (ErrorMessage) requestAttributes.getAttribute("errorMessage", RequestAttributes.SCOPE_SESSION);
-        if (errorMessage == null) {
-            errorMessage = new ErrorMessage();
-            errorMessage = new ErrorMessage();
-            errorMessage.setTitle("暂无权限");
-            errorMessage.setHead("您没有权限进行该操作");
-            errorMessage.setMessage("<a href=\"/index\">返回</a>");
-        }
+        ErrorMessage errorMessage = new ErrorMessage();
+        ResponseMessage responseMessage = (ResponseMessage) requestAttributes.getAttribute("responseMessage", RequestAttributes.SCOPE_SESSION);
+        errorMessage.setTitle("登录失败");
+        errorMessage.setHead((String) responseMessage.get("msg"));
+        errorMessage.setMessage("<a href=\"/index\">返回</a>");
         model.addAttribute("errorMessage", errorMessage);
         return "errorPage";
     }

@@ -23,6 +23,7 @@
         </div>
         <div id="headerLinks">
             <a title="Login/Register">你好：[[${user.username}]]</a>
+            <a th:href="@{/logout}">退出登录</a>
             <a th:href="@{/privateLetterList}">我的私信</a>
         </div>
     </header>

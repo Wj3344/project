@@ -3,6 +3,7 @@ package com.test.project.service.impl;
 import com.test.project.entity.PlateMessage;
 import com.test.project.entity.Uploaded;
 import com.test.project.mapper.PlateMapper;
+import com.test.project.mapper.PlateMessageMapper;
 import com.test.project.service.PlateMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,11 @@ public class PlateMessageServiceImpl implements PlateMessageService {
      */
     private PlateMapper plateMapper;
 
+    private PlateMessageMapper plateMessageMapper;
+
     @Override
     public PlateMessage getById(int id) {
-        return null;
+        return plateMessageMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -37,7 +40,7 @@ public class PlateMessageServiceImpl implements PlateMessageService {
 
     @Override
     public List<PlateMessage> getByPlateId(int plateId) {
-        return null;
+        return plateMessageMapper.findAllByPlateId(plateId);
     }
 
     @Override
@@ -50,8 +53,18 @@ public class PlateMessageServiceImpl implements PlateMessageService {
         return 0;
     }
 
+    @Override
+    public int addInstructions(int id) {
+        return plateMessageMapper.addInstructions(id);
+    }
+
     @Autowired
     public void setPlateMapper(PlateMapper plateMapper) {
         this.plateMapper = plateMapper;
+    }
+
+    @Autowired
+    public void setPlateMessageMapper(PlateMessageMapper plateMessageMapper) {
+        this.plateMessageMapper = plateMessageMapper;
     }
 }

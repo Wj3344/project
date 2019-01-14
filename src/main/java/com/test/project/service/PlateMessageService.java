@@ -61,5 +61,10 @@ public interface PlateMessageService {
 
     /********** 板块消息审核 end ************/
 
-
+    /**
+     * 增加访问量
+     * @param id 消息id
+     * @return 增加结果
+     */
+    int addInstructions(int id);
 }

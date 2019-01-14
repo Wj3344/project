@@ -24,6 +24,7 @@
         </div>
         <div id="headerLinks">
             <a title="Login/Register">你好：[[${username}]]</a>
+            <a th:href="@{/logout}">退出登录</a>
             <a th:href="@{/privateLetterList}">我的私信</a>
         </div>
     </header>
@@ -34,12 +35,12 @@
                     <h2>科目类别 </h2>
                     <hr>
                     <ul>
-                        <li><a href="wenke.html#middle" title="Link">文科专业课</a></li>
-                        <li><a href="like.html#middle" title="Link">理科专业课</a></li>
-                        <li><a href="gongke.html#middle" title="Link">工科专业课</a></li>
-                        <li><a href="wuaiyu.html#miiddl" title="Link">外语课程</a></li>
-                        <li><a href="yanjiu.html#middle" title="Link">研究方向</a></li>
-                        <li class="notimp"><a href="xuexiao.html#middle" title="Link">关于学校</a></li>
+                        <li><a th:href="@{/plateMessage/list/1}">文科专业课</a></li>
+                        <li><a th:href="@{/plateMessage/list/2}">理科专业课</a></li>
+                        <li><a th:href="@{/plateMessage/list/3}">工科专业课</a></li>
+                        <li><a th:href="@{/plateMessage/list/4}">外语课程</a></li>
+                        <li><a th:href="@{/plateMessage/list/5}">研究方向</a></li>
+                        <li class="notimp"><a th:href="@{/plateMessage/list/6}">关于学校</a></li>
                     </ul>
                 </nav>
                 <nav class="menu">
@@ -47,8 +48,16 @@
                     <hr>
                     <ul>
                         <li><a th:href="@{/publish}">信息发布</a></li>
-                        <li><a th:if="${identity} != 4" th:href="@{/publish/audit}">信息审核</a></li>
                         <li><a href="zhengqiu.html" title="Link">信息征求</a></li>
+                    </ul>
+                </nav>
+                <nav th:if="${identity} != 4" class="menu">
+                    <h2>管理员操作</h2>
+                    <hr>
+                    <ul>
+                        <li><a th:if="${identity} == 1" th:href="@{/plate/manager}">板块管理</a></li>
+                        <li><a th:if="${identity} == 2" th:href="@{/boardManager/manager}">板块管理</a></li>
+                        <li><a th:if="${identity} == 3" th:href="@{/publish/audit}">信息审核</a></li>
                     </ul>
                 </nav>
             </div>
@@ -57,7 +66,9 @@
             <div class="plateMessage redBorder">
                 <div class=" plateMessage-top">
                     <div class="plateTitle ">文科专业</div>
-                    <div class="plateMessage-more ">更多</div>
+                    <div class="plateMessage-more ">
+                        <a th:href="@{/plateMessage/list/1}">更多</a>
+                    </div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
@@ -80,7 +91,9 @@
             <div class="plateMessage redBorder ">
                 <div class=" plateMessage-top">
                     <div class="plateTitle ">理科专业</div>
-                    <div class="plateMessage-more ">更多</div>
+                    <div class="plateMessage-more ">
+                        <a th:href="@{/plateMessage/list/2}">更多</a>
+                    </div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
@@ -103,7 +116,9 @@
             <div class="plateMessage redBorder ">
                 <div class=" plateMessage-top">
                     <div class="plateTitle ">工科专业</div>
-                    <div class="plateMessage-more ">更多</div>
+                    <div class="plateMessage-more ">
+                        <a th:href="@{/plateMessage/list/3}">更多</a>
+                    </div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
@@ -126,7 +141,9 @@
             <div class="plateMessage redBorder ">
                 <div class=" plateMessage-top">
                     <div class="plateTitle ">外语</div>
-                    <div class="plateMessage-more ">更多</div>
+                    <div class="plateMessage-more ">
+                        <a th:href="@{/plateMessage/list/4}">更多</a>
+                    </div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
@@ -148,7 +165,9 @@
             <div class="plateMessage redBorder ">
                 <div class=" plateMessage-top">
                     <div class="plateTitle ">研究方向</div>
-                    <div class="plateMessage-more ">更多</div>
+                    <div class="plateMessage-more ">
+                        <a th:href="@{/plateMessage/list/5}">更多</a>
+                    </div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
@@ -170,7 +189,9 @@
             <div class="plateMessage redBorder ">
                 <div class=" plateMessage-top">
                     <div class="plateTitle ">关于学校</div>
-                    <div class="plateMessage-more ">更多</div>
+                    <div class="plateMessage-more ">
+                        <a th:href="@{/plateMessage/list/6}">更多</a>
+                    </div>
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
@@ -193,3 +214,10 @@
 </div>
 </body>
 </html>
+<style type="text/css">
+    .plateMessage-more a {
+        color: #FFFFFF;
+        text-decoration: none;
+        padding-right: 8px;
+    }
+</style>

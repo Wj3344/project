@@ -4,6 +4,8 @@ import com.test.project.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface UserMapper {
@@ -96,4 +98,12 @@ public interface UserMapper {
      */
     @Select("select password from user where username = #{username} and email = #{email} and studentId = #{studentId}")
     String getPassword(String username, String email, int studentId);
+
+    /**
+     * 获取所有的用户列表
+     *
+     * @return 用户列表
+     */
+    @Select("select id, username, nickname, studentId, signature from user where identity != 1 and identity != 2;")
+    List<User> getAllUserOfNotAdmin();
 }
