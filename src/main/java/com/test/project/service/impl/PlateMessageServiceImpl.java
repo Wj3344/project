@@ -58,6 +58,11 @@ public class PlateMessageServiceImpl implements PlateMessageService {
         return plateMessageMapper.addInstructions(id);
     }
 
+    @Override
+    public List<PlateMessage> getPlateMessageListByNumber(int number) {
+        return plateMessageMapper.getPlateMessageListByNumber(number);
+    }
+
     @Autowired
     public void setPlateMapper(PlateMapper plateMapper) {
         this.plateMapper = plateMapper;

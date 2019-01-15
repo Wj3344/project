@@ -64,150 +64,29 @@
         <section class="mainContent ">
             <div class="plateMessage redBorder">
                 <div class=" plateMessage-top">
-                    <div class="plateTitle ">文科专业</div>
-                    <div class="plateMessage-more ">
-                        <a th:href="@{/plateMessage/list/1}">更多</a>
-                    </div>
+                    <div class="plateTitle ">最新发布</div>
+                    <!--<div class="plateMessage-more ">-->
+                    <!--<a th:href="@{/plateMessage/list/1}">更多</a>-->
+                    <!--</div>-->
                     <div style="clear: both"></div>
                 </div>
                 <div class="plateMessage-content">
                     <table class="table">
-                        <tr class="row" th:each="wenke,wenkeStat:${wenkeList}">
-                            <td class="col-md-1" th:text="${wenkeStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${wenke.title}">标题</td>
-                            <td class="col-md-6" th:text="${wenke.content}">测试内容</td>
+                        <tr class="row" th:each="plateMessage,plateMessageStat:${plateMessageList}">
+                            <td class="col-md-1" th:text="${plateMessageStat.count}">序号</td>
+                            <td class="col-md-2" th:text="${plateMessage.title}">标题</td>
+                            <td class="col-md-6" th:text="${plateMessage.content}">测试内容</td>
                             <!--<td class="col-md-1" th:text="${wenke.time}">时间</td>-->
-                            <td class="col-md-2" th:text="${#dates.format(wenke.time, 'yyyy/MM/dd HH:mm')}">时间</td>
+                            <td class="col-md-2" th:text="${#dates.format(plateMessage.time, 'yyyy/MM/dd HH:mm')}">时间
+                            </td>
                             <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${wenke.id}}">查看详情</a>
+                                <a th:href="@{'/plateMessage/detail/'+${plateMessage.id}}">查看详情</a>
                             </td>
                         </tr>
                     </table>
                 </div>
             </div>
 
-            <!-- 理科专业 start -->
-            <div class="plateMessage redBorder ">
-                <div class=" plateMessage-top">
-                    <div class="plateTitle ">理科专业</div>
-                    <div class="plateMessage-more ">
-                        <a th:href="@{/plateMessage/list/2}">更多</a>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="plateMessage-content">
-                    <table class="table">
-                        <tr class="row" th:each="like,likeStat:${likeList}">
-                            <td class="col-md-1" th:text="${likeStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${like.title}">标题</td>
-                            <td class="col-md-6" th:text="${like.content}">测试内容</td>
-                            <td class="col-md-2" th:text="${#dates.format(like.time, 'yyyy/MM/dd HH:mm')}">时间</td>
-                            <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${like.id}}">查看详情</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <!-- 理科专业 end -->
-
-            <!-- 工科专业 start -->
-            <div class="plateMessage redBorder ">
-                <div class=" plateMessage-top">
-                    <div class="plateTitle ">工科专业</div>
-                    <div class="plateMessage-more ">
-                        <a th:href="@{/plateMessage/list/3}">更多</a>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="plateMessage-content">
-                    <table class="table">
-                        <tr class="row" th:each="gongke,gongkeStat:${gongkeList}">
-                            <td class="col-md-1" th:text="${gongkeStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${gongke.title}">标题</td>
-                            <td class="col-md-6" th:text="${gongke.content}">测试内容</td>
-                            <td class="col-md-2" th:text="${#dates.format(gongke.time, 'yyyy/MM/dd HH:mm')}">时间</td>
-                            <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${gongke.id}}">查看详情</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <!-- 工科专业 end -->
-
-            <!-- 外语 start -->
-            <div class="plateMessage redBorder ">
-                <div class=" plateMessage-top">
-                    <div class="plateTitle ">外语</div>
-                    <div class="plateMessage-more ">
-                        <a th:href="@{/plateMessage/list/4}">更多</a>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="plateMessage-content">
-                    <table class="table">
-                        <tr class="row" th:each="english,englishStat:${englishList}">
-                            <td class="col-md-1" th:text="${englishStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${english.title}">标题</td>
-                            <td class="col-md-6" th:text="${english.content}">测试内容</td>
-                            <td class="col-md-2" th:text="${#dates.format(english.time, 'yyyy/MM/dd HH:mm')}">时间</td>
-                            <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${english.id}}">查看详情</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <!-- 外语 end -->
-            <!-- 研究方向 start -->
-            <div class="plateMessage redBorder ">
-                <div class=" plateMessage-top">
-                    <div class="plateTitle ">研究方向</div>
-                    <div class="plateMessage-more ">
-                        <a th:href="@{/plateMessage/list/5}">更多</a>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="plateMessage-content">
-                    <table class="table">
-                        <tr class="row" th:each="research,researchStat:${researchList}">
-                            <td class="col-md-1" th:text="${researchStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${research.title}">标题</td>
-                            <td class="col-md-6" th:text="${research.content}">测试内容</td>
-                            <td class="col-md-2" th:text="${#dates.format(research.time, 'yyyy/MM/dd HH:mm')}">时间</td>
-                            <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${research.id}}">查看详情</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <!-- 研究方向 end -->
-            <!-- 关于学校 start -->
-            <div class="plateMessage redBorder ">
-                <div class=" plateMessage-top">
-                    <div class="plateTitle ">关于学校</div>
-                    <div class="plateMessage-more ">
-                        <a th:href="@{/plateMessage/list/6}">更多</a>
-                    </div>
-                    <div style="clear: both"></div>
-                </div>
-                <div class="plateMessage-content">
-                    <table class="table">
-                        <tr class="row" th:each="school,schoolStat:${schoolList}">
-                            <td class="col-md-1" th:text="${schoolStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${school.title}">标题</td>
-                            <td class="col-md-6" th:text="${school.content}">测试内容</td>
-                            <td class="col-md-2" th:text="${#dates.format(school.time, 'yyyy/MM/dd HH:mm')}">时间</td>
-                            <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${school.id}}">查看详情</a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <!-- 关于学校 end -->
         </section>
     </div>
 </div>

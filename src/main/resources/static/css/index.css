@@ -87,7 +87,6 @@ header {
 }
 
 #content .mainContent .plateMessage {
-    height: 210px;
     margin-bottom: 4px;
 }
 
@@ -482,6 +481,7 @@ footer .footerlinks {
     background-color: #c62f2f;
     color: white;
 }
+
 .plateMessage .plateMessage-content {
     font-size: 12px;
     text-align: left;

@@ -94,24 +94,10 @@ public class LoginController {
         } else {
             model.addAttribute("isAdmin", true);
         }
-        // 文科
-        List<PlateMessage> wenkeList = plateMessageService.getByIdAndNumber(1, 6);
-        model.addAttribute("wenkeList", wenkeList);
-        // 理科
-        List<PlateMessage> likeList = plateMessageService.getByIdAndNumber(2, 6);
-        model.addAttribute("likeList", likeList);
-        // 工科
-        List<PlateMessage> gongkeList = plateMessageService.getByIdAndNumber(3, 6);
-        model.addAttribute("gongkeList", gongkeList);
-        // 外语
-        List<PlateMessage> englishList = plateMessageService.getByIdAndNumber(4, 6);
-        model.addAttribute("englishList", englishList);
-        // 研究方向
-        List<PlateMessage> researchList = plateMessageService.getByIdAndNumber(5, 6);
-        model.addAttribute("researchList", researchList);
-        // 关于学校
-        List<PlateMessage> schoolList = plateMessageService.getByIdAndNumber(6, 6);
-        model.addAttribute("schoolList", schoolList);
+
+        // 从数据库中拉取最新的36条记录
+        List<PlateMessage> plateMessageList = plateMessageService.getPlateMessageListByNumber(36);
+        model.addAttribute("plateMessageList", plateMessageList);
         return "index";
     }
 

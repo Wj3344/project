@@ -63,8 +63,17 @@ public interface PlateMessageService {
 
     /**
      * 增加访问量
+     *
      * @param id 消息id
      * @return 增加结果
      */
     int addInstructions(int id);
+
+    /**
+     * 拉取数据库中的最新的记录
+     *
+     * @param number 数量
+     * @return 查询列表
+     */
+    List<PlateMessage> getPlateMessageListByNumber(int number);
 }

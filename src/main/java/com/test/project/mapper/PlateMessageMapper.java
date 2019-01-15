@@ -85,9 +85,19 @@ public interface PlateMessageMapper {
 
     /**
      * 根据板块id查询数据
+     *
      * @param plateId 板块id
      * @return 数据列表
      */
     @Select("select id, title, content, time, plateId, instructions, replies, priority, block, userId, value from plateMessage where plateId = #{plateId} order by time")
     List<PlateMessage> findAllByPlateId(int plateId);
+
+    /**
+     * 拉取数据库中的最新的记录
+     *
+     * @param number 数量
+     * @return 查询列表
+     */
+    @Select("select id, title, content, time, plateId, instructions, replies, priority, block, userId, value from plateMessage order by time limit #{number}")
+    List<PlateMessage> getPlateMessageListByNumber(int number);
 }

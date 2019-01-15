@@ -1,5 +1,6 @@
 package com.test.project.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.test.project.entity.Plate;
 import com.test.project.entity.PlateMessage;
 import com.test.project.entity.User;
@@ -9,9 +10,7 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,6 +47,19 @@ public class PlateMessageController {
         List<PlateMessage> plateMessageList = plateMessageService.getByPlateId(plateId);
         model.addAttribute("plateMessageList", plateMessageList);
         return "plateMessageList";
+    }
+
+    /**
+     * 获取板块所有的消息
+     *
+     * @param plateId 板块id
+     * @return 列表
+     */
+    @GetMapping(value = "/list/get/{id}")
+    @ResponseBody
+    public String getAllPLateMessageByPost(@PathVariable("id") int plateId) {
+        List<PlateMessage> plateMessageList = plateMessageService.getByPlateId(plateId);
+        return JSON.toJSONString(plateMessageList);
     }
 
     /**
