@@ -168,9 +168,12 @@ public class LoginController {
         if (password == null) {
             messageLink.setMessage("查询条件错误！重新找回");
             messageLink.setLink("/getPassword");
+        }else {
+            messageLink.setMessage("找回成功！你的密码为：" + password + " 返回登录！");
+            messageLink.setLink("/login");
         }
-        messageLink.setMessage("找回成功！你的密码为：" + password + " 返回登录！");
         model.addAttribute("messageLink", messageLink);
+
         return "showMessage";
     }
 

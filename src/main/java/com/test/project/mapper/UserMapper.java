@@ -134,4 +134,11 @@ public interface UserMapper {
      */
     @Update("update user set password = #{newPassword} where id = #{id}")
     int updateUserPassword(int id, String newPassword);
+
+    /**
+     * 查询所有的用户
+     * @return 列表
+     */
+    @Select("select id, username, nickname, studentId, signature from user;")
+    List<User> getAllUser();
 }

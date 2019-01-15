@@ -60,6 +60,11 @@ public class PrivateLetterServiceImpl implements PrivateLetterService {
         return privateLetterMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public int insert(PrivateLetter privateLetter) {
+        return privateLetterMapper.insert(privateLetter);
+    }
+
     @Autowired
     public void setPrivateLetterMapper(PrivateLetterMapper privateLetterMapper) {
         this.privateLetterMapper = privateLetterMapper;

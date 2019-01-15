@@ -54,8 +54,8 @@ public interface PlateMapper {
      * @param admin Admin
      * @return 查询结果
      */
-    @Select("select id from plate where admin= #{admin}")
-    List<Integer> findByAdmin(int admin);
+    @Select("select id, name, referral, admin from plate where admin= #{admin}")
+    List<Plate> findByAdmin(int admin);
 
     /**
      * 获取一个板块下的一部分内容

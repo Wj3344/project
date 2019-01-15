@@ -78,4 +78,12 @@ public interface PlateService {
      * @return 删除结果
      */
     int deleteMessage(int messageId);
+
+    /**
+     * 根据管理员id查询板块
+     *
+     * @param id id
+     * @return 列表
+     */
+    List<Plate> getPlateByAdminId(Integer id);
 }

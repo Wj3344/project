@@ -81,6 +81,11 @@ public class PlateServiceImpl implements PlateService {
         return 0;
     }
 
+    @Override
+    public List<Plate> getPlateByAdminId(Integer id) {
+        return plateMapper.findByAdmin(id);
+    }
+
     @Autowired
     public void setPlateMapper(PlateMapper plateMapper) {
         this.plateMapper = plateMapper;

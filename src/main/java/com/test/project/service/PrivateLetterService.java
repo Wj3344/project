@@ -39,4 +39,12 @@ public interface PrivateLetterService {
      * @return 删除结果
      */
     int delete(int id);
+
+    /**
+     * 发送私信
+     *
+     * @param privateLetter 私信内容
+     * @return 发送结果
+     */
+    int insert(PrivateLetter privateLetter);
 }

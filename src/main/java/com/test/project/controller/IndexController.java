@@ -1,15 +1,17 @@
 package com.test.project.controller;
 
+import com.test.project.entity.Message;
+import com.test.project.entity.PrivateLetter;
 import com.test.project.entity.User;
+import com.test.project.mapper.UserMapper;
+import com.test.project.model.MessageLink;
 import com.test.project.model.PrivateLetterList;
 import com.test.project.service.PrivateLetterService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
@@ -28,6 +30,8 @@ public class IndexController {
 
     private PrivateLetterService privateLetterService;
 
+    private UserMapper userMapper;
+
     @RequestMapping("/privateLetterList")
     public String privateLetterList(Model model) {
         User user = (User) SecurityUtils.getSubject().getPrincipal();
@@ -36,6 +40,29 @@ public class IndexController {
         List<PrivateLetterList> letterLists = privateLetterService.getByReceiverId(user.getId());
         model.addAttribute("letterLists", letterLists);
         return "privateLetterList";
+    }
+
+    @GetMapping(value = "/sendPrivateLetter")
+    public String sendPrivateLetter(Model model) {
+        List<User> userList = userMapper.getAllUser();
+        model.addAttribute("userList", userList);
+        return "sendPrivateLetter";
+    }
+
+    @PostMapping(value = "/sendPrivateLetter")
+    public String sendPrivateLetterSave(PrivateLetter privateLetter, Model model) {
+        int insert = privateLetterService.insert(privateLetter);
+        MessageLink messageLink = new MessageLink();
+        if (insert == 0) {
+            // 发送失败
+            messageLink.setMessage("发送失败!");
+        } else {
+            // 发送成功
+            messageLink.setMessage("发送成功!");
+        }
+        messageLink.setLink("/index");
+        model.addAttribute("messageLink", messageLink);
+        return "showMessage";
     }
 
     /**
@@ -76,5 +103,10 @@ public class IndexController {
     @Autowired
     public void setPrivateLetterService(PrivateLetterService privateLetterService) {
         this.privateLetterService = privateLetterService;
+    }
+
+    @Autowired
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 }

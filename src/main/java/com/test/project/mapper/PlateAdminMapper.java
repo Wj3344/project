@@ -63,4 +63,12 @@ public interface PlateAdminMapper {
      */
     @Select("select id, plateId, userId from plateAdmin where userId = #{adminId};")
     List<PlateAdmin> findByAdminId(int adminId);
+    /**
+     * 删除一条记录
+     * @param plateId 板块id
+     * @param userId 用户id
+     * @return 删除结果
+     */
+    @Delete("delete from plateAdmin where plateId = #{plateId} and userId = #{userId}")
+    int deleteByUserIdAndPlateId(int plateId, int userId);
 }

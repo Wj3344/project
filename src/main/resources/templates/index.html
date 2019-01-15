@@ -50,6 +50,13 @@
                         <li><a th:href="@{/publish}">信息发布</a></li>
                     </ul>
                 </nav>
+                <nav class="menu">
+                    <h2>信息发送 </h2>
+                    <hr>
+                    <ul>
+                        <li><a th:href="@{/sendPrivateLetter}">发送私信</a></li>
+                    </ul>
+                </nav>
                 <nav th:if="${identity} != 4" class="menu">
                     <h2>管理员操作</h2>
                     <hr>
