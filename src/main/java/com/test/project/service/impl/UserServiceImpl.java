@@ -34,6 +34,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int modifyUserMessage(User user) {
+        return userMapper.updateUserMessage(user);
+    }
+
+    @Override
+    public int modifyUserIdentity(User user) {
+        return userMapper.updateUserIdentity(user);
+    }
+
+    @Override
     public String lookForPassword(String email) {
         return null;
     }
@@ -61,6 +71,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUser() {
         return userMapper.getAllUserOfNotAdmin();
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int modifyUserPassword(int id, String newPassword) {
+        return userMapper.updateUserPassword(id,newPassword);
     }
 
     @Autowired

@@ -106,4 +106,32 @@ public interface UserMapper {
      */
     @Select("select id, username, nickname, studentId, signature from user where identity != 1 and identity != 2;")
     List<User> getAllUserOfNotAdmin();
+
+    /**
+     * 更新用户的账户等级
+     *
+     * @param user 用户信息
+     * @return 修改结果
+     */
+    @Update("update user set identity = #{identity} where id = #{id}")
+    int updateUserIdentity(User user);
+
+    /**
+     * 修改用户基本数据
+     *
+     * @param user 用户基本数据
+     * @return 修改结果
+     */
+    @Update("update user set nickname = #{nickname},school = #{school},email = #{email},signature = #{signature},picture = #{picture} where id = #{id}")
+    int updateUserMessage(User user);
+
+    /**
+     * 更新用户密码
+     *
+     * @param id          用户id
+     * @param newPassword 新密码
+     * @return 更新结果
+     */
+    @Update("update user set password = #{newPassword} where id = #{id}")
+    int updateUserPassword(int id, String newPassword);
 }

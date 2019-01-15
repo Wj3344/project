@@ -2,7 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>知海考研 - 板块管理 - 板块修改</title>
+    <title>知海考研 - 板块管理 - 板块添加</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
     <script src="http://use.edgefonts.net/montserrat:n4:default;source-sans-pro:n2:default.js"
@@ -30,32 +30,32 @@
 <div style="clear: both;height: 6px;"></div>
 <div class="well plateList">
     <div class="plate">
-        <form th:action="@{/plate/manager/modify}" method="post">
-            <label>
-                <input hidden name="id" th:value="${plate.id}">
-            </label>
+        <form th:action="@{/plate/manager/add}" method="post">
             <div class="form-group">
                 <label for="plateTitle">板块标题 : </label>
-                <input type="text" th:value="${plate.name}" class="form-control" id="plateTitle" name="name"
+                <input type="text" class="form-control" id="plateTitle" name="name"
                        placeholder="板块标题">
             </div>
             <div class="form-group">
                 <label for="plateReferral">板块介绍 : </label>
-                <input type="text" th:value="${plate.referral}" class="form-control" id="plateReferral" name="referral"
+                <input type="text" class="form-control" id="plateReferral" name="referral"
                        placeholder="板块介绍">
             </div>
             <label for="adminId">指定板块负责人: </label>
-            <select id="adminId" name="admin" th:value="${plate.admin}" class="form-control" >
-                <option th:each="user:${userList}" th:value="${user.id}" th:text="${user.username} + '   ' + ${user.studentId}">1</option>
+            <select id="adminId" name="admin" class="form-control">
+                <option th:each="user:${userList}" th:value="${user.id}"
+                        th:text="${user.username} + '   ' + ${user.studentId}">1
+                </option>
             </select>
             <div class="row" style="margin-top: 40px">
                 <div class="col-xs-3 col-xs-offset-1">
-                    <a th:href="@{/plate/manager}" class="btn btn-primary btn-block ">取消修改</a>
+                    <a th:href="@{/plate/manager}" class="btn btn-primary btn-block ">取消添加</a>
                 </div>
                 <div class="col-xs-3 col-xs-offset-4">
                     <button type="submit" class="btn btn-warning btn-block">确认修改</button>
                 </div>
-            </div>                    　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+            </div>
+            　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
         </form>
     </div>
 </div>

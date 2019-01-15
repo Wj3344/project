@@ -1,11 +1,15 @@
 package com.test.project.service.impl;
 
 import com.test.project.entity.Plate;
+import com.test.project.entity.User;
+import com.test.project.exception.MyAddException;
 import com.test.project.mapper.PlateMapper;
 import com.test.project.model.Guestbook;
 import com.test.project.service.PlateService;
+import com.test.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,9 +26,11 @@ import java.util.List;
 public class PlateServiceImpl implements PlateService {
     private PlateMapper plateMapper;
 
+    private UserService userService;
+
     @Override
     public int addPlate(Plate plate) {
-        return 0;
+        return plateMapper.insert(plate);
     }
 
     @Override
@@ -33,8 +39,21 @@ public class PlateServiceImpl implements PlateService {
     }
 
     @Override
+    @Transactional(rollbackFor = MyAddException.class)
     public int updatePlate(Plate plate) {
-        return 0;
+        int i = plateMapper.updateByPrimaryKey(plate);
+        if (i == 0) {
+            throw new MyAddException("修改板块信息失败：" + plate.toString());
+        }
+        // 修改user身份信息
+        User user = new User();
+        user.setId(plate.getAdmin());
+        user.setIdentity(2);
+        i = userService.modifyUserIdentity(user);
+        if (i == 0) {
+            throw new MyAddException("修改板块负责人身份信息失败：");
+        }
+        return i;
     }
 
     @Override
@@ -65,5 +84,10 @@ public class PlateServiceImpl implements PlateService {
     @Autowired
     public void setPlateMapper(PlateMapper plateMapper) {
         this.plateMapper = plateMapper;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 }

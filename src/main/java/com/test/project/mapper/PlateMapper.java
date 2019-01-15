@@ -45,7 +45,7 @@ public interface PlateMapper {
      * @param record 新的记录
      * @return 修改结果
      */
-    @Update("update plate set name = #{admin}, referral = #{referral}, admin = #{admin} where id = #{id}")
+    @Update("update plate set name = #{name}, referral = #{referral}, admin = #{admin} where id = #{id}")
     int updateByPrimaryKey(Plate record);
 
     /**

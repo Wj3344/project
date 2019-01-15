@@ -32,6 +32,22 @@ public interface UserService {
      */
     int modifyUser(User user);
 
+    /**
+     * 修改用户基本信息
+     *
+     * @param user 用户基本信息
+     * @return 修改结果
+     */
+    int modifyUserMessage(User user);
+
+    /**
+     * 修改用户的身份等级
+     *
+     * @param user 用户信息
+     * @return 修改结果
+     */
+    int modifyUserIdentity(User user);
+
 
     /**
      * 找回密码
@@ -83,4 +99,20 @@ public interface UserService {
      */
     List<User> getAllUser();
 
+    /**
+     * 根据id查询用户
+     *
+     * @param id id
+     * @return 查询结果
+     */
+    User getUserById(int id);
+
+    /**
+     * 更新用户密码
+     *
+     * @param id          用户id
+     * @param newPassword 新密码
+     * @return 更新结果
+     */
+    int modifyUserPassword(int id, String newPassword);
 }
