@@ -63,6 +63,7 @@
                     <ul>
                         <li><a th:if="${identity} == 1" th:href="@{/plate/manager}">板块管理</a></li>
                         <li><a th:if="${identity} == 2" th:href="@{/boardManager/manager}">板块管理</a></li>
+                        <li><a th:if="${identity} == 2" th:href="@{/publish/audit}">信息审核</a></li>
                         <li><a th:if="${identity} == 3" th:href="@{/publish/audit}">信息审核</a></li>
                     </ul>
                 </nav>
