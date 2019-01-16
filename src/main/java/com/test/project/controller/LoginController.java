@@ -134,12 +134,19 @@ public class LoginController {
     public String doRegistration(User user, Model model) {
         System.out.println(user);
         MessageLink messageLink = new MessageLink();
-        int registration = userMapper.registration(user);
-        if (registration == 0) {
-            messageLink.setMessage("注册失败！重新注册");
-            messageLink.setLink("/registration");
+        int registration = 0;
+        try {
+            registration = userMapper.registration(user);
+        } catch (Exception e) {
+            System.out.println("注册信息已存在");
         }
-        messageLink.setMessage("注册成功！返回登录");
+        if (registration == 0) {
+            messageLink.setMessage("注册失败！重新注册,注册信息已存在");
+            messageLink.setLink("/registration");
+        } else {
+            messageLink.setMessage("注册成功！返回登录");
+            messageLink.setLink("/login");
+        }
         model.addAttribute("messageLink", messageLink);
         return "showMessage";
     }
@@ -168,7 +175,7 @@ public class LoginController {
         if (password == null) {
             messageLink.setMessage("查询条件错误！重新找回");
             messageLink.setLink("/getPassword");
-        }else {
+        } else {
             messageLink.setMessage("找回成功！你的密码为：" + password + " 返回登录！");
             messageLink.setLink("/login");
         }
