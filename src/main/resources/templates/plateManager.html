@@ -37,7 +37,9 @@
         <hr>
         <h3 th:text="${plate.referral}">板块介绍</h3>
         <div class="pull-right">
-            <a class="btn btn-danger" th:href="@{'/plate/manager/modify/' + ${plate.id}}" role="button">修改板块消息</a>
+            <a class="btn btn-warning" th:href="@{'/plate/manager/modify/' + ${plate.id}}" role="button">修改板块消息</a>
+            <a th:if="${plate.id} > 6" class="btn btn-danger" th:href="@{'/plate/manager/delete/' + ${plate.id}}"
+               role="button">删除板块</a>
         </div>
         <div style="clear: both;"></div>
     </div>

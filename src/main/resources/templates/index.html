@@ -80,15 +80,16 @@
                 </div>
                 <div class="plateMessage-content">
                     <table class="table">
-                        <tr class="row" th:each="plateMessage,plateMessageStat:${plateMessageList}">
+                        <tr class="row" th:each="plateMessage,plateMessageStat:${plateMessageTestList}">
                             <td class="col-md-1" th:text="${plateMessageStat.count}">序号</td>
-                            <td class="col-md-2" th:text="${plateMessage.title}">标题</td>
-                            <td class="col-md-6" th:text="${plateMessage.content}">测试内容</td>
-                            <!--<td class="col-md-1" th:text="${wenke.time}">时间</td>-->
-                            <td class="col-md-2" th:text="${#dates.format(plateMessage.time, 'yyyy/MM/dd HH:mm')}">时间
+                            <td class="col-md-2" th:text="${plateMessage.plateMessage.title}">标题</td>
+                            <td class="col-md-5" th:text="${plateMessage.plateMessage.content}">测试内容</td>
+                            <td class="col-md-1" th:text="${plateMessage.plate.name}">时间</td>
+                            <td class="col-md-2"
+                                th:text="${#dates.format(plateMessage.plateMessage.time, 'yyyy/MM/dd HH:mm')}">时间
                             </td>
                             <td class="col-md-1">
-                                <a th:href="@{'/plateMessage/detail/'+${plateMessage.id}}">查看详情</a>
+                                <a th:href="@{'/plateMessage/detail/'+${plateMessage.plateMessage.id}}">查看详情</a>
                             </td>
                         </tr>
                     </table>

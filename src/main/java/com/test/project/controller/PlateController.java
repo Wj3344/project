@@ -124,6 +124,22 @@ public class PlateController {
     }
 
     /**
+     * 删除一个板块
+     *
+     * @return 删除结果
+     */
+    @GetMapping(value = "/manager/delete/{plateId}")
+    public String deletePlate(@PathVariable("plateId") int id, Model model) {
+        if(id <= 6)
+        {
+            return "redirect:/plate/manager";
+        }else{
+            plateService.deletePlate(id);
+            return "redirect:/plate/manager";
+        }
+    }
+
+    /**
      * 列出所有的板块信息
      *
      * @param model 模型

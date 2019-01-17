@@ -43,4 +43,11 @@ public interface MessageMapper {
      */
     @Update("update message set message = #{message} where id = #{id};")
     int updateByPrimaryKey(Message record);
+
+    /**
+     * 根据板块id删除板块留言
+     * @param id 板块id
+     */
+    @Delete("delete from message where plateId = #{id}")
+    void deleteByPlateId(int id);
 }

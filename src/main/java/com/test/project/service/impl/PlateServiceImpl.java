@@ -1,9 +1,10 @@
 package com.test.project.service.impl;
 
 import com.test.project.entity.Plate;
+import com.test.project.entity.PlateMessage;
 import com.test.project.entity.User;
 import com.test.project.exception.MyAddException;
-import com.test.project.mapper.PlateMapper;
+import com.test.project.mapper.*;
 import com.test.project.model.Guestbook;
 import com.test.project.service.PlateService;
 import com.test.project.service.UserService;
@@ -28,14 +29,32 @@ public class PlateServiceImpl implements PlateService {
 
     private UserService userService;
 
+    private UploadedMapper uploadedMapper;
+
+    private PlateMessageMapper plateMessageMapper;
+
+    private PlateAdminMapper plateAdminMapper;
+    private MessageMapper mesageMapper;
+
     @Override
     public int addPlate(Plate plate) {
         return plateMapper.insert(plate);
     }
 
     @Override
+    @Transactional(rollbackFor = MyAddException.class)
     public int deletePlate(int id) {
-        return 0;
+        // 删除板块上传消息
+        uploadedMapper.deleteByPlateId(id);
+        // 删除板块消息
+        plateMessageMapper.deleteByPlateId(id);
+        // 删除板块负责人
+        plateAdminMapper.deleteByPLateId(id);
+        // 删除留言表
+        mesageMapper.deleteByPlateId(id);
+        // 删除板块
+        plateMapper.deleteByPrimaryKey(id);
+        return 1;
     }
 
     @Override
@@ -94,5 +113,25 @@ public class PlateServiceImpl implements PlateService {
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    @Autowired
+    public void setUploadedMapper(UploadedMapper uploadedMapper) {
+        this.uploadedMapper = uploadedMapper;
+    }
+
+    @Autowired
+    public void setPlateMessageMapper(PlateMessageMapper plateMessageMapper) {
+        this.plateMessageMapper = plateMessageMapper;
+    }
+
+    @Autowired
+    public void setPlateAdminMapper(PlateAdminMapper plateAdminMapper) {
+        this.plateAdminMapper = plateAdminMapper;
+    }
+
+    @Autowired
+    public void setMesageMapper(MessageMapper mesageMapper) {
+        this.mesageMapper = mesageMapper;
     }
 }

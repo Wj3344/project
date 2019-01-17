@@ -71,4 +71,12 @@ public interface PlateAdminMapper {
      */
     @Delete("delete from plateAdmin where plateId = #{plateId} and userId = #{userId}")
     int deleteByUserIdAndPlateId(int plateId, int userId);
+
+    /**
+     * 删除板块负责人
+     * @param id 板块id
+     * @return 删除结果
+     */
+    @Delete("delete from plateAdmin where plateId = #{id}")
+    int deleteByPLateId(int id);
 }

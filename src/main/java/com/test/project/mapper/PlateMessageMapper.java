@@ -98,6 +98,14 @@ public interface PlateMessageMapper {
      * @param number 数量
      * @return 查询列表
      */
-    @Select("select id, title, content, time, plateId, instructions, replies, priority, block, userId, value from plateMessage order by time limit #{number}")
+    @Select("select id, title, content, time, plateId, instructions, replies, priority, block, userId, value from plateMessage order by time desc limit #{number}")
     List<PlateMessage> getPlateMessageListByNumber(int number);
+
+    /**
+     * 删除板块消息
+     * @param id 板块id
+     * @return 消息删除结果
+     */
+    @Delete("delete from plateMessage where plateId = #{id}")
+    int deleteByPlateId(int id);
 }

@@ -1,8 +1,10 @@
 package com.test.project.controller;
 
 import com.test.project.entity.*;
+import com.test.project.mapper.PlateMapper;
 import com.test.project.mapper.UserMapper;
 import com.test.project.model.MessageLink;
+import com.test.project.model.PlateMessageTest;
 import com.test.project.service.PlateAdminService;
 import com.test.project.service.PlateMessageService;
 import org.apache.shiro.SecurityUtils;
@@ -18,6 +20,7 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -40,6 +43,8 @@ public class LoginController {
     private PlateMessageService plateMessageService;
 
     private PlateAdminService plateAdminService;
+
+    private PlateMapper plateMapper;
 
     /**
      * 返回登录页面
@@ -97,7 +102,16 @@ public class LoginController {
 
         // 从数据库中拉取最新的36条记录
         List<PlateMessage> plateMessageList = plateMessageService.getPlateMessageListByNumber(36);
+        List<PlateMessageTest> plateMessageTestList = new LinkedList<>();
+        for (PlateMessage plateMessage : plateMessageList) {
+            PlateMessageTest plateMessageTest = new PlateMessageTest();
+            plateMessageTest.setPlateMessage(plateMessage);
+            Plate plate = plateMapper.selectByPrimaryKey(plateMessage.getPlateId());
+            plateMessageTest.setPlate(plate);
+            plateMessageTestList.add(plateMessageTest);
+        }
         model.addAttribute("plateMessageList", plateMessageList);
+        model.addAttribute("plateMessageTestList", plateMessageTestList);
         return "index";
     }
 
@@ -198,5 +212,10 @@ public class LoginController {
     @Autowired
     public void setPlateAdminService(PlateAdminService plateAdminService) {
         this.plateAdminService = plateAdminService;
+    }
+
+    @Autowired
+    public void setPlateMapper(PlateMapper plateMapper) {
+        this.plateMapper = plateMapper;
     }
 }

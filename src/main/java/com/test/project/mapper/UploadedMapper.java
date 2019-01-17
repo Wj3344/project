@@ -65,4 +65,13 @@ public interface UploadedMapper {
      */
     @Select("select id, title, content, time, plateId, userId, value, status from uploaded where plateId = #{plateId}")
     List<Uploaded> findAllByPlateIdOrOrderByTime(int plateId);
+
+    /**
+     * 根据板块id删除板块上传消息
+     *
+     * @param id 板块id
+     * @return 删除结果
+     */
+    @Delete("delete from uploaded where plateId = #{id}")
+    int deleteByPlateId(int id);
 }
