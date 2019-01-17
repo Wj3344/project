@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-6
  * Time: 下午7:38
  * Description:
  *
- * @author chen
+ *
  */
 public class ErrorMessage implements Serializable {
 

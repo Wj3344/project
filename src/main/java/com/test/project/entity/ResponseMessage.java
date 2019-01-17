@@ -5,12 +5,12 @@ import java.util.Map;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-5
  * Time: 下午7:18
  * Description:
  *
- * @author chen
+ *
  */
 public class ResponseMessage extends HashMap<String, Object> {
 

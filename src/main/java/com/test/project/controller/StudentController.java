@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-2
  * Time: 下午5:15
  * Description:
  *
- * @author chen
+ *
  */
 @RestController
 @RequestMapping("/student")

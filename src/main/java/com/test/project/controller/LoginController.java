@@ -25,12 +25,10 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ * <p>
  * Date: 19-1-5
  * Time: 下午7:15
  * Description:
- *
- * @author chen
  */
 @Controller
 public class LoginController {

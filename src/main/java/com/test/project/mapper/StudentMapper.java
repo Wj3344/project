@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-2
  * Time: 下午5:01
  * Description:
  *
- * @author chen
+ *
  */
 @Mapper
 @Component

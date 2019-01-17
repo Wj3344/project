@@ -21,12 +21,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-15
  * Time: 下午12:19
  * Description:
  *
- * @author chen
+ *
  */
 @Controller
 @RequestMapping("/boardManager")

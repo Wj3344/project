@@ -5,12 +5,12 @@ import com.test.project.entity.Student;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-2
  * Time: 下午5:10
  * Description:
  *
- * @author chen
+ *
  */
 public interface StudentService {
     /**

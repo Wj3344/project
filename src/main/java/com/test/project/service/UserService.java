@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-12
  * Time: 下午1:58
  * Description: 用户帐号的服务层
  *
- * @author chen
+ *
  */
 public interface UserService {
 

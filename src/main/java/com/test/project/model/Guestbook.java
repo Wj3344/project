@@ -4,12 +4,12 @@ import java.util.Date;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-12
  * Time: 下午2:39
  * Description: 板块留言表
  *
- * @author chen
+ *
  */
 public class Guestbook {
     /**

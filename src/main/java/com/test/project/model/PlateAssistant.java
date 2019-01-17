@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-15
  * Time: 下午4:46
  * Description: 板块助理
  *
- * @author chen
+ *
  */
 public class PlateAssistant {
     /**

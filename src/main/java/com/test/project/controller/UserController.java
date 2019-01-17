@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-15
  * Time: 上午1:47
  * Description:
  *
- * @author chen
+ *
  */
 @Controller
 @RequestMapping(value = "/user")

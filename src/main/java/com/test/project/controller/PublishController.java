@@ -19,12 +19,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-13
  * Time: 下午8:48
  * Description:  信息发布管理
  *
- * @author chen
+ *
  */
 @Controller
 @RequestMapping(value = "/publish")

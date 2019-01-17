@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-2
  * Time: 下午5:11
  * Description:
  *
- * @author chen
+ *
  */
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {

@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-12
  * Time: 下午3:26
  * Description:
  *
- * @author chen
+ *
  */
 public interface PlateMessageService {
     /**

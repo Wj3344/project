@@ -4,12 +4,12 @@ import com.test.project.entity.PrivateLetter;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-12
  * Time: 下午4:13
  * Description: 私信查看类
  *
- * @author chen
+ *
  */
 public class PrivateLetterMessage extends PrivateLetter {
     /**

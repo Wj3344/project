@@ -13,12 +13,12 @@ import static org.junit.Assert.*;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-10
  * Time: 下午7:49
  * Description:
  *
- * @author chen
+ *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

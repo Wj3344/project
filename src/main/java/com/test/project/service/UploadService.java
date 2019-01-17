@@ -6,12 +6,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-13
  * Time: 下午9:26
  * Description:
  *
- * @author chen
+ *
  */
 public interface UploadService {
     /**

@@ -12,12 +12,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-13
  * Time: 下午5:03
  * Description:
  *
- * @author chen
+ *
  */
 @Service
 public class PlateMessageServiceImpl implements PlateMessageService {

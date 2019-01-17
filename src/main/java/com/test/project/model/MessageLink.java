@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-13
  * Time: 下午2:44
  * Description:
  *
- * @author chen
+ *
  */
 public class MessageLink implements Serializable {
 

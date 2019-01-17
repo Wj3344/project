@@ -19,12 +19,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-13
  * Time: 下午9:27
  * Description:
  *
- * @author chen
+ *
  */
 @Service
 public class UploadServiceImpl implements UploadService {

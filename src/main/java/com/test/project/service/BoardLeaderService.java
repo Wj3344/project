@@ -4,12 +4,12 @@ import com.test.project.entity.PlateAdmin;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-12
  * Time: 下午3:07
  * Description: 板块负责人服务层
  *
- * @author chen
+ *
  */
 public interface BoardLeaderService {
 

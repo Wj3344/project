@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-2
  * Time: 下午4:57
  * Description:
  *
- * @author chen
+ *
  */
 public class Student implements Serializable {
     private static final long serialVersionUID = -895387916820192584L;

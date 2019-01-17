@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-6
  * Time: 下午9:39
  * Description:
  *
- * @author chen
+ *
  */
 @ControllerAdvice
 @Order(value = Ordered.HIGHEST_PRECEDENCE)

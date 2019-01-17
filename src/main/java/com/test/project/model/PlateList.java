@@ -8,12 +8,12 @@ import java.util.List;
 
 /**
  * Created by handsome programmer.
- * User: chen
+ *
  * Date: 19-1-15
  * Time: 上午1:21
  * Description:
  *
- * @author chen
+ *
  */
 public class PlateList implements Serializable {
 
